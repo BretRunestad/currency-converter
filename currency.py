@@ -1,6 +1,8 @@
 def convert(rates, value, from_string, to_string):
-    """Takes a list of rates, and takes an amount of currency(value),
-    and """
+    """Takes a list of rates, an amount of currency(value), a from_string, and
+    a to_string.  It cross references the 'from' and 'to' strings to find the
+    applicable currency exchange rate.  It then multiplies the value by that
+    rate, rounded to 2 decimal places."""
     tuple_list = [x for x in rates if x[0]==from_string and x[1]==to_string]
     if tuple_list:
         return round(tuple_list[0][2] * value, 2)

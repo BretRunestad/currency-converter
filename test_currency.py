@@ -26,3 +26,18 @@ def test_flipped_conversion():
     rates = [('USD', 'EUR', .74), ('USD', 'JPY', 145.949)]
     assert convert(rates, value = 1,
                    from_string = 'EUR', to_string = 'USD') == 1.35
+
+def test_multiple_conversions():
+    rates = [('USD', 'EUR', .74),
+             ('USD', 'JPY', 145.949),
+             ('USD', 'CAD', 1.21)]
+    assert convert(rates, value = 500,
+                   from_string = 'USD', to_string = 'EUR') == 370
+    assert convert(rates, value = 500,
+                   from_string = 'EUR', to_string = 'USD') == 675.68
+    assert convert(rates, value = 500,
+                   from_string = 'USD', to_string = 'JPY') == 72974.5
+    assert convert(rates, value = 500,
+                   from_string = 'JPY', to_string = 'USD') == 3.43
+    assert convert(rates, value = 500,
+                   from_string = 'USD', to_string = 'CAD') == 605
